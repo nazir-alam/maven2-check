@@ -1,8 +1,10 @@
 pipeline {
   agent any
 
-   def mvnHome
-
+  def mvnHome {
+    mvnHome = tool 'Maven'
+  }  
+  stages {
    stage('SCM Checkout') { // for display purposes
 
       // Get some code from a GitHub repository
@@ -14,8 +16,8 @@ pipeline {
       // ** NOTE: This 'M3' Maven tool must be configured
 
       // **       in the global configuration. 
-      mvnHome = tool 'Maven'
-
+      
+   }
    }
 
       stage('Build') {
