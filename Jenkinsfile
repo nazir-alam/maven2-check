@@ -36,13 +36,18 @@ node {
       }
 
    }
-
-   // stage('Results') {
-
-    //  junit '**/target/surefire-reports/*.xml'
-
-   //  archiveArtifacts 'target/*.jar'
-  //  } 
+  
+   stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+   
    stage('Deploy') {
       deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://localhost:8090/')], contextPath: null, war: '**/*.war'
     }
