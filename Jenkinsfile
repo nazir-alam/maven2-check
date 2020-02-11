@@ -24,7 +24,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
 
    //      }
 
-   //   }
+      }
 
    }
   }
