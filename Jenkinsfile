@@ -12,7 +12,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
         steps {
           // Run the maven build
 
-         withEnv(["MVN_HOME=$mvnHome"]) {
+       //  withEnv(["MVN_HOME=$mvnHome"]) {
 
        //  if (isUnix()) {
  
@@ -20,9 +20,10 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
 
        //  } else {
 
-            bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+       //     bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
 
    //      }
+          bat "mvn clean package"
 
       }
 
