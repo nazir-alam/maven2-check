@@ -1,23 +1,10 @@
 pipeline {
-  agent any
-
- //def mvnHome {
- //mvnHome = tool 'Maven'
- // }  
+  agent any{}
   stages {
-   stage('SCM Checkout') { // for display purposes
-
-      // Get some code from a GitHub repository
-
-      //git 'https://github.com/nazir-alam/maven2-check.git'
+      stage('SCM Checkout') {
 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '104ad4c1-b458-42de-a712-f264f17bb13e', url: 'https://github.com/nazir-alam/maven2-check.git']]])
-      // Get the Maven tool.
-
-      // ** NOTE: This 'M3' Maven tool must be configured
-
-      // **       in the global configuration. 
       
-   }
+        }
 
       stage('Build') {
  
