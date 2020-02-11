@@ -25,7 +25,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
    //      }
           bat "mvn clean package"
 
-      }
+      
 
    }
   }
