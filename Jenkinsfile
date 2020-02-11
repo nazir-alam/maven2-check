@@ -1,9 +1,11 @@
 pipeline {
   stages {
       stage('SCM Checkout') {
+        steps {
 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '104ad4c1-b458-42de-a712-f264f17bb13e', url: 'https://github.com/nazir-alam/maven2-check.git']]])
       
         }
+      }
 
       stage('Build') {
  
