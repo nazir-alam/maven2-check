@@ -1,9 +1,9 @@
 pipeline {
   agent any
 
-  def mvnHome {
-    mvnHome = tool 'Maven'
-  }  
+ //def mvnHome {
+ //mvnHome = tool 'Maven'
+ // }  
   stages {
    stage('SCM Checkout') { // for display purposes
 
@@ -17,7 +17,6 @@ pipeline {
 
       // **       in the global configuration. 
       
-   }
    }
 
       stage('Build') {
@@ -54,4 +53,5 @@ pipeline {
    stage('Deploy') {
       deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://localhost:8090/')], contextPath: null, war: '**/*.war'
     }
+  }
 }
