@@ -8,7 +8,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
       }
 
       stage('Build') {
- 
+        steps {
           // Run the maven build
 
          withEnv(["MVN_HOME=$mvnHome"]) {
@@ -26,7 +26,7 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
       }
 
    }
-  
+  }
    stage('Test') {
             steps {
                 sh 'mvn test'
@@ -39,7 +39,8 @@ checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleC
         }
    
    stage('Deploy') {
+     steps {
       deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://localhost:8090/')], contextPath: null, war: '**/*.war'
     }
   }
-}
+  }}
